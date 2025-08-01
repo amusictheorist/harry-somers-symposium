@@ -1,11 +1,19 @@
 <header class="sticky top-0 z-50 bg-gray-100 border-b border-gray-300 shadow-sm">
-  <div class="container mx-auto max-w-4xl px-6 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between">
+  <div class="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+
     <div>
-      <h1 class="text-3xl sm:text-4xl font-bold mb-2">Harry Somers at 100</h1>
-      <p class="text-lg italic text-gray-700">Reflections on His Life and Legacy</p>
+      <h1 class="text-2xl sm:text-3xl font-bold">Harry Somers at 100</h1>
+      <p class="text-sm sm:text-base italic text-gray-700 leading-tight">Reflections on His Life and Legacy</p>
     </div>
-    <nav class="mb-4 sm:mb-0">
-      <ul class="flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-6 text-base font-medium text-gray-700">
+
+    <button id="menu-toggle" class="sm:hidden text-gray-700 focus:outline-none">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+
+    <nav class="hidden sm:block">
+      <ul class="flex space-x-6 text-base font-medium text-gray-700">
         <li><a href="/" class="hover:text-blue-600">Home</a></li>
         <li><a href="/about/" class="hover:text-blue-600">About</a></li>
         <li><a href="/schedule/" class="hover:text-blue-600">Schedule</a></li>
@@ -14,4 +22,24 @@
       </ul>
     </nav>
   </div>
+
+  <nav id="mobile-menu" class="sm:hidden hidden px-6 pb-4">
+    <ul class="flex flex-col space-y-2 text-base font-medium text-gray-700">
+      <li><a href="/" class="hover:text-blue-600">Home</a></li>
+      <li><a href="/about/" class="hover:text-blue-600">About</a></li>
+      <li><a href="/schedule/" class="hover:text-blue-600">Schedule</a></li>
+      <li><a href="/register/" class="hover:text-blue-600">Register</a></li>
+      <li><a href="/resources/" class="hover:text-blue-600">Resources</a></li>
+    </ul>
+  </nav>
 </header>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  });
+</script>
