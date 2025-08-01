@@ -2,5 +2,28 @@
   "dependencies": {
     "@tailwindcss/cli": "^4.1.11",
     "tailwindcss": "^4.1.11"
-  }
+  },
+  "name": "harry-somers-symposium",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  },
+  "scripts": {
+  "build": "eleventy",
+  "watch": "eleventy --watch",
+  "serve": "eleventy --serve"
+},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amusictheorist/harry-somers-symposium.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amusictheorist/harry-somers-symposium/issues"
+  },
+  "homepage": "https://github.com/amusictheorist/harry-somers-symposium#readme",
+  "description": ""
 }
