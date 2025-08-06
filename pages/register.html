@@ -3,14 +3,14 @@ layout: layout.html
 title: "Registration - Harry Somers at 100"
 permalink: /register/
 ---
-<div class="max-w-5xl mx-auto px-6 mt-12 mb-12 flex flex-col md:flex-row gap-8">
-  <div class="md:w-1/3 bg-gray-50 p-6 rounded shadow text-gray-700">
-    <h2 class="text-xl font-semibold mb-2">Please enter your details</h2>
-    <p class="mb-6 text-base leading-relaxed">
+<div class="max-w-5xl mx-auto px-6 mt-12 mb-12 flex flex-col gap-8">
+  <div class="bg-gray-50 p-6 rounded shadow text-gray-700">
+    <h2 class="w-full text-xl font-semibold mb-2">Please enter your details</h2>
+    <p class="w-full mb-6 text-base leading-relaxed">
       Use the form below to register for the symposium. We kindly ask for your name, email, and dietary restrictions to help us prepare. Your information will only be used for event registration and will not be shared or made publicly available.
     </p>
 
-    <form name="registration" method="POST" action="/thanks/" netlify netlify-honeypot="bot-field" class="space-y-4">
+    <form name="registration" method="POST" action="/thanks/" netlify netlify-honeypot="bot-field" class="w-full space-y-4">
       <input type="hidden" name="form-name" value="registration" />
       <p class="hidden">
         <label>Don't fill this out if you're human: <input name="bot-field" /></label>
@@ -76,7 +76,7 @@ permalink: /register/
     </script>
   </div>
 
-  <section class="md:w-2/3 bg-white rounded shadow text-gray-800 p-6">
+  <section class="bg-white rounded shadow text-gray-800 p-6">
     <h2 class="text-xl font-semibold mb-4">Getting there</h2>
 
     <div class="mb-12">
