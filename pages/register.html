@@ -3,115 +3,115 @@ layout: layout.html
 title: "Registration - Harry Somers at 100"
 permalink: /register/
 ---
-<div class="max-w-2xl mx-auto mb-6 text-gray-700">
-  <h2 class="text-xl font-semibold mb-2">Please enter your details</h2>
-  <p class="text-base leading-relaxed">
-    Use the form below to register for the symposium. We kindly ask for your name, email, and dietary restrictions to help us prepare. Your information will only be used for event registration and will not be shared or made publicly available.
-  </p>
-</div>
-<form name="registration" method="POST" action="/thanks/" netlify netlify-honeypot="bot-field" class="space-y-4 max-w-2xl mx-auto bg-gray-50 p-6 rounded shadow">
-  <input type="hidden" name="form-name" value="registration" />
-  <p class="hidden">
-    <label>Don't fill this out if you're human: <input name="bot-field"></label>
-  </p>
+<div class="max-w-5xl mx-auto px-6 mt-12 mb-12 flex flex-col md:flex-row gap-8">
+  <div class="md:w-1/3 bg-gray-50 p-6 rounded shadow text-gray-700">
+    <h2 class="text-xl font-semibold mb-2">Please enter your details</h2>
+    <p class="mb-6 text-base leading-relaxed">
+      Use the form below to register for the symposium. We kindly ask for your name, email, and dietary restrictions to help us prepare. Your information will only be used for event registration and will not be shared or made publicly available.
+    </p>
 
-  <label class="block">
-    Name:
-    <input type="text" name="name" required class="border p-2 w-full">
-  </label>
+    <form name="registration" method="POST" action="/thanks/" netlify netlify-honeypot="bot-field" class="space-y-4">
+      <input type="hidden" name="form-name" value="registration" />
+      <p class="hidden">
+        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+      </p>
 
-  <label class="block">
-    Email:
-    <input type="email" name="email" required class="border p-2 w-full">
-  </label>
+      <label class="block">
+        Name:
+        <input type="text" name="name" required class="border p-2 w-full" />
+      </label>
 
-  <fieldset class="mb-6">
-    <legend class="font-semibold text-gray-800 mb-2">Dietary restrictions:</legend>
-    <div class="space-y-2">
       <label class="block">
-        <input type="checkbox" name="dietary" value="Vegetarian" class="mr-2">
-        Vegetarian
+        Email:
+        <input type="email" name="email" required class="border p-2 w-full" />
       </label>
-      <label class="block">
-        <input type="checkbox" name="dietary" value="Vegan" class="mr-2">
-        Vegan
-      </label>
-      <label class="block">
-        <input type="checkbox" name="dietary" value="Gluten-Free" class="mr-2">
-        Gluten-Free
-      </label>
-      <label class="block">
-        <input type="checkbox" name="dietary" value="Dairy-Free" class="mr-2">
-        Dairy-Free
-      </label>
-      <label class="block">
-        <input type="checkbox" name="dietary" value="Nut Allergy" class="mr-2">
-        Nut Allergy
-      </label>
-      <label class="block">
-        <input type="checkbox" id="dietary-other-checkbox" name="dietary" value="Other" class="mr-2">
-        Other
-      </label>
-      <div id="other-dietary-input" class="mt-2 hidden">
-        <label class="block text-sm text-gray-700 mb-1" for="dietary-other-text">
-          Please specify:
-        </label>
-        <input type="text" name="dietary_other" id="dietary-other-text" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+
+      <fieldset class="mb-6">
+        <legend class="font-semibold text-gray-800 mb-2">Dietary restrictions:</legend>
+        <div class="space-y-2">
+          <label class="block">
+            <input type="checkbox" name="dietary" value="Vegetarian" class="mr-2" />
+            Vegetarian
+          </label>
+          <label class="block">
+            <input type="checkbox" name="dietary" value="Vegan" class="mr-2" />
+            Vegan
+          </label>
+          <label class="block">
+            <input type="checkbox" name="dietary" value="Gluten-Free" class="mr-2" />
+            Gluten-Free
+          </label>
+          <label class="block">
+            <input type="checkbox" name="dietary" value="Dairy-Free" class="mr-2" />
+            Dairy-Free
+          </label>
+          <label class="block">
+            <input type="checkbox" name="dietary" value="Nut Allergy" class="mr-2" />
+            Nut Allergy
+          </label>
+          <label class="block">
+            <input type="checkbox" id="dietary-other-checkbox" name="dietary" value="Other" class="mr-2" />
+            Other
+          </label>
+          <div id="other-dietary-input" class="mt-2 hidden">
+            <label for="dietary-other-text" class="block text-sm text-gray-700 mb-1">Please specify:</label>
+            <input type="text" name="dietary_other" id="dietary-other-text" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
+          </div>
+        </div>
+      </fieldset>
+
+      <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded">Register</button>
+    </form>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const otherCheckbox = document.getElementById('dietary-other-checkbox');
+        const otherInput = document.getElementById('other-dietary-input');
+        if (otherCheckbox) {
+          otherCheckbox.addEventListener('change', function () {
+            otherInput.classList.toggle('hidden', !this.checked);
+          });
+        }
+      });
+    </script>
+  </div>
+
+  <section class="md:w-2/3 bg-white rounded shadow text-gray-800 p-6">
+    <h2 class="text-xl font-semibold mb-4">Getting there</h2>
+
+    <div class="mb-12">
+      <p class="mb-8">
+        Edward Johnson Building, University of Toronto Faculty of Music<br />
+        80 Queen's Park, Toronto, ON M5S 2C5
+      </p>
+      <div class="aspect-w-16 aspect-h-9 w-full rounded shadow overflow-hidden">
+        <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.1152383792573!2d-79.3994814083946!3d43.66657309658904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34bbac6c2bd5%3A0xb20ca26630099af5!2sEdward%20Johnson%20Bldg%2C%2080%20Queens%20Park%2C%20Toronto%2C%20ON%20M5S%202C5!5e0!3m2!1sen!2sca!4v1754505882199!5m2!1sen!2sca"
+          height="400px"
+          width="600px"
+          style="border:0;"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+      </div>
+      
+      <div class="mb-12 py-8">
+        <p class="mb-8">
+          112 ACE (Accolade East Building), York University<br />
+          83 York Boulevard, Toronto, ON M3J 2S5
+        </p>
+        <div class="aspect-w-16 aspect-h-9 w-full rounded shadow overflow-hidden">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.9985384822357!2d-79.50248452381683!3d43.77288917109676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2e24bf73dcab%3A0xd9125a796619a45!2sAccolade%20East%20Bldg%2C%2083%20York%20Blvd%2C%20North%20York%2C%20ON%20M7A%202C5!5e0!3m2!1sen!2sca!4v1754505809474!5m2!1sen!2sca"
+            height="400px"
+            width="600px"
+            style="border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </div>
-  </fieldset>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const otherCheckbox = document.getElementById('dietary-other-checkbox');
-      const otherInput = document.getElementById('other-dietary-input');
-
-      if (otherCheckbox) {
-        otherCheckbox.addEventListener('change', function () {
-          otherInput.classList.toggle('hidden', !this.checked);
-        });
-      }
-    });
-  </script>
-  <button type="submit" class="bg-blue-600 text-white px-4 py-2">Register</button>
-</form>
-
-<section class="max-w-2xl mx-auto mt-12 p-6 bg-white rounded shadow text-gray-800">
-  <h2 class="text-xl font-semibold mb-4">Getting there</h2>
-
-  <div class="mb-12">
-    <p class="mb-8">
-      Edward Johnson Building, University of Toronto Faculty of Music<br>
-      80 Queen's Park, Toronto, ON M5S 2C5
-    </p>
-    <div class="aspect-w-16 aspect-h-9">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2886.115233407203!2d-79.3946105!3d43.66657319999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b34bbac6c2bd5%3A0xb20ca26630099af5!2sEdward%20Johnson%20Bldg%2C%2080%20Queens%20Park%2C%20Toronto%2C%20ON%20M5S%202C5!5e0!3m2!1sen!2sca!4v1754075974521!5m2!1sen!2sca"
-        width="600"
-        height="450"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </div>
-
-  <div class="mb-12 py-8">
-    <p class="mb-8">
-      112 ACE (Accolade East Building), York University<br>
-      83 York Boulevard, Toronto, ON M3J 2S5
-    </p>
-    <div class="aspect-w-16 aspect-h-9">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2880.9985384822357!2d-79.50248452381683!3d43.77288917109676!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882b2e24bf73dcab%3A0xd9125a796619a45!2sAccolade%20East%20Bldg%2C%2083%20York%20Blvd%2C%20North%20York%2C%20ON%20M7A%202C5!5e0!3m2!1sen!2sca!4v1754413809548!5m2!1sen!2sca"
-        width="600"
-        height="450"
-        style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
