@@ -1,22 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }}</title>
-  <link rel="stylesheet" href="/src/output.css">
-</head>
-<body class="bg-white text-gray-900 font-serif leading-relaxed">
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>{{ title }}</title>
+      <link rel="stylesheet" href="/src/output.css">
+    </head>
+  <body class="bg-white text-gray-900 font-serif leading-relaxed">
 
-  {%include "header.html" %}
+    {%include "header.html" %}
 
-  <main class="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 space-y-10">
-    <div class="grid grid-cols-1 gap-12">
-      {{ content }}
-    </div>
-  </main>
+    <main class="px-4 sm:px-8 md:px-12 lg:px-20 xl:px-32 space-y-10">
+      <div class="grid grid-cols-1 gap-12">
+       {{ content }}
+      </div>
+    </main>
 
-  {%include "footer.html" %}
-  
-</body>
+    {%include "footer.html" %}
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('mobile-menu');
+
+        toggle.addEventListener('click', () => {
+          menu.classList.toggle('hidden');
+        });
+      });
+    </script>
+  </body>
 </html>
