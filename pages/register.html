@@ -10,12 +10,7 @@ permalink: /register/
       Use the form below to register for the symposium. We kindly ask for your name, email, and dietary restrictions to help us prepare. Your information will only be used for event registration and will not be shared or made publicly available.
     </p>
 
-    <form name="registration" method="POST" action="/thanks/" netlify netlify-honeypot="bot-field" class="w-full space-y-4">
-      <input type="hidden" name="form-name" value="registration" />
-      <p class="hidden">
-        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-      </p>
-
+    <form name="registration" method="POST" action="/thanks/" data-netlify="true" class="w-full space-y-4">
       <label class="block">
         Name:
         <input type="text" name="name" required class="border p-2 w-full" />
