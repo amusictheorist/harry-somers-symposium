@@ -45,7 +45,11 @@
         <li>
           <a
             href="/resources/"
-            class="{% if page.url == '/resources/' %}font-bold {% else %}hover:text-blue-600{% endif %}">Resources</a></li>
+            class="{% if page.url == '/resources/' %}font-bold {% else %}hover:text-blue-600{% endif %}"
+          >
+            Resources
+          </a>
+        </li>
       </ul>
     </nav>
 
@@ -58,11 +62,46 @@
 
   <nav id="mobile-menu" class="sm:hidden hidden px-4 sm:px-6 pb-4">
     <ul class="flex flex-col space-y-2 text-base font-medium text-gray-700">
-      <li><a href="/" class="hover:text-blue-600">Home</a></li>
-      <li><a href="/about/" class="hover:text-blue-600">About</a></li>
-      <li><a href="/schedule/" class="hover:text-blue-600">Schedule</a></li>
-      <li><a href="/register/" class="hover:text-blue-600">Register</a></li>
-      <li><a href="/resources/" class="hover:text-blue-600">Resources</a></li>
+      <li>
+        <a
+          href="/"
+          class="{% if page.url == '/' %}font-bold {% else %}hover:text-blue-600{% endif %}"
+          >
+          Home
+        </a>
+      </li>
+      <li>
+        <a
+          href="/about/"
+          class="{% if page.url == '/about/' %}font-bold {% else %}hover:text-blue-600{% endif %}"
+        >
+          About
+        </a>
+      </li>
+      <li>
+        <a
+          href="/schedule/"
+          class="{% if page.url == '/schedule/' %}font-bold {% else %}hover:text-blue-600{% endif%}"
+        >
+          Schedule
+        </a>
+      </li>
+      <li>
+        <a
+          href="/register/"
+          class="{% if page.url == '/register/' %}font-bold {% else %}hover:text-blue-600{% endif %}"
+        >
+          Register
+        </a>
+      </li>
+      <li>
+        <a
+          href="/resources/"
+          class="{% if page.url == '/resources/' %}font-bold {% else %}hover:text-blue-600{% endif %}"
+        >
+          Resources
+        </a>
+      </li>
     </ul>
   </nav>
 </header>
