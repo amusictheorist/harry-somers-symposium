@@ -2,3 +2,9 @@ node_modules
 _site
 src/output.css
 .DS_Store
+.env
+.env.*
+
+
+# Local Netlify folder
+.netlify
