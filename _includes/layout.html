@@ -17,16 +17,96 @@
     </main>
 
     {%include "footer.html" %}
+    
+    <div
+      id="donate-tab"
+      class="hidden fixed right-0 top-7/8 items-center bg-blue-600 text-white rounded-lg shadow-lg z-50 overflow-hidden transition-all duration-300 opacity-0"
+    >
+      <a
+        href="https://uoft.me/IMC"
+        target="_blank"
+        rel="noopener"
+        aria-label="Donate"
+        class="px-3 py-1 text-sm hover:bg-blue-700 transition block"
+      >
+        Donate
+      </a>
+      <button
+        id="hide-donate-tab"
+        class="px-2 py-1 bg-blue-700 hover:bg-blue-800 text-xs focus:outline-none"
+        aria-label="Hide donate tab"
+      >
+        ⟩
+      </button>
+    </div>
+
+    <div
+      id="donate-lip"
+      class="hidden fixed right-0 top-7/8 bg-blue-600 text-white rounded-r-lg shadow-lg z-50 cursor-pointer transition-all duration-300 px-1 py-4 text-xs"
+    >
+      ‹
+    </div>
+
+    <style>
+      #donate-tab {
+        transform: translateX(100%);
+      }
+      #donate-tab.show {
+        transform: translateX(0);
+        opacity: 1;
+      }
+      #donate-tab,
+      #donate-lip {
+        transition: opacity 0.3s ease, transform 0.3s ease;
+      }
+    </style>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        const toggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('mobile-menu');
+    document.addEventListener('DOMContentLoaded', function () {
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('mobile-menu');
+      if (toggle && menu) {
+        toggle.addEventListener('click', () => menu.classList.toggle('hidden'));
+      }
 
-        toggle.addEventListener('click', () => {
-          menu.classList.toggle('hidden');
+      const donateTab = document.getElementById('donate-tab');
+      const hideBtn = document.getElementById('hide-donate-tab');
+      const donateLip = document.getElementById('donate-lip');
+      const STORAGE_KEY = 'donateTabHidden';
+
+      if (!donateTab || !hideBtn || !donateLip) return;
+
+      const isHidden = localStorage.getItem(STORAGE_KEY) === 'true';
+      if (isHidden) {
+        donateLip.classList.remove('hidden');
+      }
+
+      const onScroll = () => {
+        if (!isHidden && window.scrollY > 200) {
+          donateTab.classList.remove('hidden');
+          requestAnimationFrame(() => donateTab.classList.add('show'));
+          window.removeEventListener('scroll', onScroll);
+        }
+      };
+      window.addEventListener('scroll', onScroll);
+
+      hideBtn.addEventListener('click', () => {
+        donateTab.classList.remove('show');
+        donateTab.addEventListener('transitionend', function handler() {
+          donateTab.classList.add('hidden');
+          donateLip.classList.remove('hidden');
+          localStorage.setItem(STORAGE_KEY, 'true');
+          donateTab.removeEventListener('transitionend', handler);
         });
       });
+
+      donateLip.addEventListener('click', () => {
+        donateLip.classList.add('hidden');
+        donateTab.classList.remove('hidden');
+        requestAnimationFrame(() => donateTab.classList.add('show'));
+        localStorage.setItem(STORAGE_KEY, 'false');
+      });
+    });
     </script>
   </body>
 </html>
