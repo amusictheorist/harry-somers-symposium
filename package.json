@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "@tailwindcss/cli": "^4.1.11",
+    "sib-api-v3-sdk": "^8.5.0",
     "tailwindcss": "^4.1.11"
   },
   "name": "harry-somers-symposium",
@@ -10,10 +11,10 @@
     "@11ty/eleventy": "^3.1.2"
   },
   "scripts": {
-  "build": "npx tailwindcss -i src/input.css -o src/output.css && eleventy",
-  "watch": "eleventy --watch",
-  "serve": "eleventy --serve"
-},
+    "build": "npx tailwindcss -i src/input.css -o src/output.css && eleventy",
+    "watch": "eleventy --watch",
+    "serve": "eleventy --serve"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/amusictheorist/harry-somers-symposium.git"
