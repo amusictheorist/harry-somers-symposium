@@ -4,7 +4,7 @@ export async function handler() {
   
   try {
     const res = await fetch(`https://api.netlify.com/api/v1/forms/${formId}/submissions`, {
-      headers: { Authorization: `Bearer: ${apiToken}` }
+      headers: { Authorization: `Bearer ${apiToken}` }
     });
 
     if (!res.ok) {
@@ -13,6 +13,8 @@ export async function handler() {
         body: JSON.stringify({ error: 'Failed to fetch submissions' })
       };
     }
+    console.log("FORM_ID:", process.env.FORM_ID);
+    console.log("API Token starts with:", process.env.NETLIFY_API_TOKEN?.slice(0, 5));
 
     const submissions = await res.json();
     return {
