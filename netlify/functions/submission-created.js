@@ -11,37 +11,33 @@ const apiToken = process.env.NETLIFY_API_TOKEN;
 
 export async function handler(event) {
   try {
-    if (event.httpMethod !== 'POST') {
-      return { statusCode: 405, body: 'Method not allowed' };
-    }
-
     const body = JSON.parse(event.body);
-    console.log('incoming submissionpayload:', JSON.stringify(body, null, 2));
+    const submission = body.payload;
+    const fields = submission.data || {};
 
-    const submission = body.payload?.data || {};
-
-    const res = await fetch(`https://api.netlify.com/api/v1/forms/${formId}/submissions`, {
-      headers: { Authorization: `Bearer ${apiToken}` }
-    });
+    const res = await fetch(
+      `https://api.netlify.com/api/v1/forms/${formId}/submissions`,
+      {
+        headers: { Authorization: `Bearer ${apiToken}` }
+      }
+    );
 
     if (!res.ok) {
-      return {
-        statusCode: res.status,
-        body: JSON.stringify({ error: 'Failed to fetch submissions count' })
-      };
+      console.error(`Failed to fetch submissions: ${res.status}`);
+      return { statusCode: res.status, body: 'Failed to fetch submission count' }
     }
 
     const submissions = await res.json();
     const count = submissions.length;
 
     const emailContent = `
-    New form received!
+    New form submission received!
     
-    Name: ${submission.data.name || 'N/A'}
-    Email: ${submission.data.email || 'N/A'}
-    Dietary restrictions: ${submission.data.dietary || 'N/A'}
-    Other dietary restrictions: ${submission.data.dietary_other || 'N/A'}
-
+    Name: ${fields.name || 'N/A'}
+    Email: ${fields.email || 'N/A'}
+    Dietary restrictions: ${fields.dietary || 'N/A'}
+    Other dietary restrictions: ${fields.dietary_other || 'N/A'}
+    
     Total submissions so far: ${count}
     `;
 
@@ -55,18 +51,19 @@ export async function handler(event) {
 
     try {
       await apiInstance.sendTransacEmail(sendSmtpEmail);
+      console.log('Email sent successfully');
     } catch (error) {
       console.error('Brevo API error:', error.response?.body || error.message);
       return {
         statusCode: 400,
         body: JSON.stringify({
-          error: 'Bad Request',
+          error: 'Email send failed',
           details: error.response?.body || error.message
         })
       };
     }
 
-    return { statusCode: 200, body: 'Email sent successfully' };
+    return { statusCode: 200, body: 'Webhook processed successfully' };
   } catch (err) {
     console.error('Function error:', err);
     return { statusCode: 500, body: JSON.stringify({ error: err.message }) };
