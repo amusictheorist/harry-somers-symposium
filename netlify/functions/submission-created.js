@@ -15,7 +15,10 @@ export async function handler(event) {
       return { statusCode: 405, body: 'Method not allowed' };
     }
 
-    const submission = JSON.parse(event.body);
+    const body = JSON.parse(event.body);
+    console.log('incoming submissionpayload:', JSON.stringify(body, null, 2));
+
+    const submission = body.payload?.data || {};
 
     const res = await fetch(`https://api.netlify.com/api/v1/forms/${formId}/submissions`, {
       headers: { Authorization: `Bearer ${apiToken}` }
@@ -51,7 +54,7 @@ export async function handler(event) {
     };
 
     try {
-      const result = await apiInstance.sendTransacEmail(sendSmtpEmail);
+      await apiInstance.sendTransacEmail(sendSmtpEmail);
     } catch (error) {
       console.error('Brevo API error:', error.response?.body || error.message);
       return {
