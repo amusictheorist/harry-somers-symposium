@@ -11,7 +11,7 @@ The site is built with **Eleventy (11ty)** and **Tailwind CSS**, and is currentl
 ## Status
 
 - **Read-only / no contributions**
-Browse the code if it's useful, but please **don't open issues, don't submit pull requests, and don't fork **.
+Browse the code if it's useful, but please **don't open issues, don't submit pull requests, and don't fork**.
 - **Live**: Symposium site is currently accessible at the link above.
 - **Future**: After the symposium has passed, this repo will be converted into a **Github template** for building conference or event sites.
 
